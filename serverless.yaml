@@ -1,0 +1,24 @@
+service: globalhack-translate-api
+
+frameworkVersion: ">=1.2.0 <2.0.0"
+
+provider:
+  name: aws
+  runtime: python3.6
+  environment:
+    GOOGLE_APPLICATION_CREDENTIALS: ./.keyfile
+
+functions:
+  translate:
+    handler: translate.endpoint
+    events:
+      - http:
+          path: translate
+          method: post
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
