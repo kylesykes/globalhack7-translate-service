@@ -15,6 +15,18 @@ functions:
       - http:
           path: translate
           method: post
+  verify:
+    handler: translate.verify
+    events:
+      - http:
+          path: verify
+          method: post
+  translatearray:
+    handler: translate.translate_array
+    events:
+      - http:
+          path: translatearray
+          method: post
 
 plugins:
   - serverless-python-requirements
